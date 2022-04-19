@@ -45,8 +45,7 @@ binaryOperationHelper state =
                     |= integerFactor
                     |> Parser.andThen
                         (\result ->
-                            Ast.BinaryOperation_ result.op value result.factor
-                            |> Just
+                            Just (Ast.BinaryOperation_ result.op value result.factor)
                             |> Parser.Loop
                             |> Parser.succeed)
                 , Parser.succeed (Parser.Done value) 
